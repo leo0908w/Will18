@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         sound1 = sp.load(this, R.raw.nnn, 1);
         sound2 = sp.load(this, R.raw.ddd, 1);
 
-
     }
 
     @Override
@@ -74,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         Intent it = new Intent(this, MyService.class);
         it.getBooleanExtra("isPause", true);
         startService(it);
-
     }
 
     public void stop(View v) {

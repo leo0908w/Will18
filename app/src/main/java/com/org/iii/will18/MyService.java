@@ -51,6 +51,7 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         boolean isPause = intent.getBooleanExtra("will", false);
         int seekto = intent.getIntExtra("seekto", -1);
+
         if (mediaPlayer != null && seekto >= 0) {
             mediaPlayer.seekTo(seekto);
 
@@ -59,7 +60,7 @@ public class MyService extends Service {
                 mediaPlayer.start();
             }
         } else if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            if (isPause) {
+            if (!isPause) {
                 mediaPlayer.pause();
             }
         }
@@ -70,7 +71,7 @@ public class MyService extends Service {
     public void onDestroy() {
         super.onDestroy();
 
-        if (mediaPlayer.isPlaying()){
+        if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
         }
         mediaPlayer.release();
